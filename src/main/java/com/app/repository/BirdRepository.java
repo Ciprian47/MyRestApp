@@ -9,6 +9,7 @@ public interface BirdRepository extends JpaRepository<Bird, String> {
 
     public List<Bird> findAll();
     public List<Bird> findAllByCollor(String collor);
-    public List<Bird> findAllByWeight(String weight);
+    public List<Bird> findAllByNameAndCollor(String name, String collor);
+    public List<Bird> findAllByName(String Name);
 
 }

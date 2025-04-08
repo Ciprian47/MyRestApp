@@ -20,4 +20,6 @@ insert into bird (id, name, collor, weight, height) values (3, 'sparrow', 'strip
 
 insert into sighting (id, bird_id, location, datetime) values (1, 2, 'city', '20/03/2025');
 insert into sighting (id, bird_id, location, datetime) values (2, 2, 'park', '22/03/2025');
-insert into sighting (id, bird_id, location, datetime) values (3, 2, 'zoo', '25/03/2025');
+insert into sighting (id, bird_id, location, datetime) values (3, 2, 'park', '22/03/2025');
+insert into sighting (id, bird_id, location, datetime) values (4, 2, 'park', '21/03/2025');
+insert into sighting (id, bird_id, location, datetime) values (5, 2, 'zoo', '25/03/2025');

@@ -14,7 +14,7 @@ public class Sighting {
     private Bird bird;
 
     @Column
-    private String Location;
+    private String location;
 
     @Column
     private String datetime;
@@ -36,11 +36,11 @@ public class Sighting {
     }
 
     public String getLocation() {
-        return Location;
+        return location;
     }
 
     public void setLocation(String location) {
-        Location = location;
+        location = location;
     }
 
     public String getDatetime() {

@@ -2,14 +2,10 @@ package com.app.controller;
 
 import com.app.repository.entity.Sighting;
 import com.app.service.BirdService;
-//import com.app.repository.BirdRepository;
 import com.app.repository.entity.Bird;
 import com.app.service.SightingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MyController {
@@ -38,10 +34,26 @@ public class MyController {
                     .append(brd.getHeight()).append(" ").append("</p>");
         }
 
-        return "Greetings from Spring Boot! " + sb.toString() + " end here";
+        return "Greetings from Spring Boot! " + sb.toString() + " end here from bird";
     }
 
-    @GetMapping("/birds/{byCollor}")
+    @GetMapping("/birds/param")
+    public String getBirdsByCollorParam(@RequestParam("name") String name, @RequestParam("collor") String collor) {
+
+        StringBuilder sb = new StringBuilder();
+        for(Bird brd : birdService.getAllBirdsByNameAndCollor(name, collor)){
+            sb.append("<p>")
+                    .append(brd.getId()).append(" ")
+                    .append(brd.getName()).append(" ")
+                    .append(brd.getCollor()).append(" ")
+                    .append(brd.getWeight()).append(" ")
+                    .append(brd.getHeight()).append(" ").append("</p>");
+        }
+
+        return "Greetings from Spring Boot! " + sb.toString() + " end here from bird param";
+    }
+
+    @GetMapping("/birds/pathvar/{byCollor}")
     public String getBirdsByCollor(@PathVariable("byCollor") String byCollor) {
 
         StringBuilder sb = new StringBuilder();
@@ -57,22 +69,6 @@ public class MyController {
         return "Greetings from Spring Boot! " + sb.toString() + " end here from path variable";
     }
 
-    @GetMapping("/birds/param")
-    public String getBirdsByCollorParam(@RequestParam("weight") String weight) {
-
-        StringBuilder sb = new StringBuilder();
-        for(Bird brd : birdService.getAllBirdsByWeight(weight)){
-            sb.append("<p>")
-                    .append(brd.getId()).append(" ")
-                    .append(brd.getName()).append(" ")
-                    .append(brd.getCollor()).append(" ")
-                    .append(brd.getWeight()).append(" ")
-                    .append(brd.getHeight()).append(" ").append("</p>");
-        }
-
-        return "Greetings from Spring Boot! " + sb.toString() + " end here from request param";
-    }
-
     @GetMapping("/sighting")
     public String getSightings() {
 
@@ -85,14 +81,14 @@ public class MyController {
                     .append(sighting.getDatetime()).append(" ").append("</p>");
         }
 
-        return "Greetings from Spring Boot! " + sb.toString() + " end here from sighting all birds";
+        return "Greetings from Spring Boot! " + sb.toString() + " end here from sighting";
     }
 
     @GetMapping("/sighting/param")
-    public String getSightingsByParams(@RequestParam("birdName") String birdName, @RequestParam("location") String location,@RequestParam("timeInterval") String timeInterval) {
+    public String getSightingsByParams(@RequestParam("birdName") String birdName, @RequestParam("location") String location,@RequestParam("time") String time) {
 
         StringBuilder sb = new StringBuilder();
-        for(Sighting sighting : sightingService.getAllSightings()){
+        for(Sighting sighting : sightingService.getSightingsByParams(birdName, location, time)){
             sb.append("<p>")
                     .append(sighting.getId()).append(" ")
                     .append(sighting.getBird().getName()).append(" ")
@@ -100,6 +96,7 @@ public class MyController {
                     .append(sighting.getDatetime()).append(" ").append("</p>");
         }
 
-        return "Greetings from Spring Boot! " + sb.toString() + " end here from sighting all birds";
+        return "Greetings from Spring Boot! " + sb.toString() + " end here from sighting params";
     }
+
 }

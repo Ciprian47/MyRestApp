@@ -23,8 +23,13 @@ public class BirdService {
         List<Bird> birdList = birdRepository.findAllByCollor(byCollor);
         return birdList;
     }
-    public List<Bird> getAllBirdsByWeight(String byCollor){
-        List<Bird> birdList = birdRepository.findAllByWeight(byCollor);
+    public List<Bird> getAllBirdsByNameAndCollor(String name, String collor){
+        List<Bird> birdList = birdRepository.findAllByNameAndCollor(name, collor);
+        return birdList;
+    }
+
+    public List<Bird> getBirdByName(String name){
+        List<Bird> birdList = birdRepository.findAllByName(name);
         return birdList;
     }
 
