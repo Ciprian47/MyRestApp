@@ -15,22 +15,18 @@ public class BirdService {
     BirdRepository birdRepository;
 
     public List<Bird> getAllBirds(){
-        List<Bird> birdList = birdRepository.findAll();
-       return birdList;
+        return birdRepository.findAll();
     }
 
     public List<Bird> getAllBirdsByCollor(String byCollor){
-        List<Bird> birdList = birdRepository.findAllByCollor(byCollor);
-        return birdList;
+        return birdRepository.findAllByCollor(byCollor);
     }
     public List<Bird> getAllBirdsByNameAndCollor(String name, String collor){
-        List<Bird> birdList = birdRepository.findAllByNameAndCollor(name, collor);
-        return birdList;
+        return birdRepository.findAllByNameAndCollor(name, collor);
     }
 
     public List<Bird> getBirdByName(String name){
-        List<Bird> birdList = birdRepository.findAllByName(name);
-        return birdList;
+        return birdRepository.findAllByName(name);
     }
 
     public void updateAllBirdsNames(String name){

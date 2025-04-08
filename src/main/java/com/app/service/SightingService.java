@@ -26,13 +26,8 @@ public class SightingService {
         List<Bird> brdList = birdService.getBirdByName(birdName);
         List<Sighting> retList = new ArrayList<>();
         brdList.forEach(q-> {
-
-            sightingRepository.findByBirdAndLocationAndDatetime(q, location, time).forEach(v->{
-                retList.add(v);
-            });
-
+            retList.addAll(sightingRepository.findByBirdAndLocationAndDatetime(q, location, time));
         });
-
 
         return retList;
     }
