@@ -99,4 +99,12 @@ public class MyController {
         return "Greetings from Spring Boot! " + sb.toString() + " end here from sighting params";
     }
 
+    @GetMapping("/changeall/{birdName}")
+    public String getChange(@PathVariable("birdName") String birdName) {
+
+        birdService.updateAllBirdsNames(birdName);
+
+        return "Greetings from Spring Boot! all birds changed to " + birdName + " end here from changeall";
+    }
+
 }

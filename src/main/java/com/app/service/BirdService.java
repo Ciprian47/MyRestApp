@@ -33,5 +33,15 @@ public class BirdService {
         return birdList;
     }
 
+    public void updateAllBirdsNames(String name){
+        List<Bird> birdList = birdRepository.findAll();
+
+        for(Bird brd : birdList){
+            brd.setName(name);
+            birdRepository.save(brd);
+        }
+
+    }
+
 
 }
